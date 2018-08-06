@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <!-- 首页的header和其他页面的不一洋 -->
-    <router-view><router-view/>
-    <app-tabs></app-tabs>
+    <router-view></router-view>
+    <!-- <app-tabs></app-tabs> -->
   </div>
 </template>
 
