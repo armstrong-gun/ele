@@ -1,15 +1,36 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-
 Vue.use(Router)
+
+//引入pages里面的组件
+import Home from '@/pages/home'
+import Discover from '@/pages/discover'
+import Order from '@/pages/order'
+import Mine from '@/pages/mine'
+
 
 export default new Router({
   routes: [
     {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      path:'/home',
+      alias:'/',
+      name:'home',
+      component:Home
+    },
+    {
+      path:'/discover',
+      name:'discover',
+      component:Discover
+    },
+    {
+      path:'/order',
+      name:'order',
+      component:Order
+    },
+    {
+      path:'/mine',
+      name:'mine',
+      component:Mine
     }
   ]
 })

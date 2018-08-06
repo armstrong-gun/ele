@@ -1,23 +1,24 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <!-- 首页的header和其他页面的不一洋 -->
+    <router-view><router-view/>
+    <app-tabs></app-tabs>
   </div>
 </template>
 
 <script>
+//引入公共组件
+import AppTabs from '@/components/common/AppTabs'
+import AppHeader from '@/components/common/AppHeader'
 export default {
-  name: 'App'
+  name: 'App',
+  components:{
+    AppTabs,
+    AppHeader
+  }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
