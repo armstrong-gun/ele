@@ -1,5 +1,7 @@
 <template>
-    <h1>首页</h1>
+<page class="page">
+        <h1>首页</h1>
+</page>
 </template>
 
 <script>
@@ -11,3 +13,4 @@ export default {
 <style>
 
 </style>
+
