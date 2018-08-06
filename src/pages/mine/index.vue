@@ -1,6 +1,6 @@
 <template>
 <page class="page">
-        <h1>首页</h1>
+        <h1>我的</h1>
 </page>
 </template>
 
