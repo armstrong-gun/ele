@@ -26,44 +26,36 @@
         <transition name="slide">
             <div class="filter-open" v-show="showOpen">
                 <div class="list-box">
-                    <div class="busynessService">
+                    <div>
                         <h4>商家服务(可多选)</h4>
                         <ul>
-                            <li><span><i></i>蜂鸟专送</span></li>
-                            <li><span><i></i>蜂鸟专送</span></li>
-                            <li><span><i></i>蜂鸟专送</span></li>
-                            <li><span><i></i>蜂鸟专送</span></li>
-                            <li><span><i></i>蜂鸟专送</span></li>
+                            <li><span><img src="" alt="">{{openListData.delivery_mode.text}}</span></li>
+                            <li v-for="(serveItem, index) in openListData.supports " :key="index">
+                                <span><img src="" alt="">{{serveItem.name}}</span>
+                            </li>                      
                         </ul>
                     </div>
-                    <div class="discountActivity">
+                    <div>
                         <h4>优惠活动(单选)</h4>
                         <ul>
-                            <li><span>新用户优惠</span></li>
-                            <li><span>特价商品</span></li>
-                            <li><span>下单立减</span></li>
-                            <li><span>赠品优惠</span></li>
-                            <li><span>下单返红包</span></li>
-                            <li><span>进店领红包</span></li>
+                            <li v-for="actItem in openListData.activity_types" :key="actItem.id"><span>{{actItem.name}}</span></li>
+                           
                         </ul>
                     </div>
-                    <div class="personCost">
+                    <div>
                         <h4>人均消费</h4>
                         <ul>
-                            <li><span>￥20以下</span></li>
-                            <li><span>￥20 -￥40</span></li>
-                            <li><span>￥40 -￥60</span></li>
-                            <li><span>￥60 -￥80</span></li>
-                            <li><span>￥80 -￥100</span></li>
-                            <li><span>￥100以上</span></li>
+                            <li v-for="costItem in openListData.average_costs" :key="costItem.id">
+                                <span @click="changePickedStyle(costItem.id)" :class="{picked:addPickedBool[costItem.id]}">{{costItem.description}}</span>
+                            </li>
+                            <!-- 一加class就都加上了，有待解决 -->
                         </ul>
                     </div>
                 </div>
                 <div class="btn-box">
-                    <button class="clear" disabled="disabled"></button>
-                    <button class="makeSure"></button>
-                </div>
-    
+                    <span class="clear btn" disabled="disabled">清空</span>
+                    <span class="makeSure btn">确定</span>
+                </div>    
             </div>
         </transition>
         
@@ -78,9 +70,33 @@ export default {
             showOpen:false,
             //显示隐藏要改成添加和减少class的形式
             sortListData:['综合排序','好评优先','销量最高','起送价最低','配送最快','配送费用最低','人均从低到高','人均从高到低'],
-            openListData:[
-                {}
-            ]
+            openListData:{
+                activity_types:[
+                    {name: "新用户优惠",id: 1},
+                    {name: "特价商品",id: 2},
+                    {name: "下单立减",id: 3},
+                    {name: "赠品优惠",id: 4},
+                    {name: "下单返红包",id: 5},
+                    {name: "进店领红包",id: 6},       
+                ],
+                average_costs:[
+                    {description:"¥20以下",id:1},
+                    {description:"￥20-￥40",id:2},
+                    {description:"￥40-￥60",id:3},
+                    {description:"￥60-￥80",id:4},
+                    {description:"￥80-￥100",id:5},
+                    {description:"￥100以上",id:6},
+                ],
+                delivery_mode:{text:"蜂鸟专送"},
+                supports:[
+                    {name:"品牌商家"},
+                    {name:"食安保"},
+                    {name:"新店"},
+                    {name:"开发票"}
+                ]
+            },
+            addPickedBool:{}
+            
         }
     },
     methods:{
@@ -95,6 +111,9 @@ export default {
         hidePullDown(){
             this.showSort = false;
             this.showOpen = false;
+        },
+        changePickedStyle(id){
+            this.addPickedBool[id] = !this.addPickedBool[id];
         }
     }
 }
@@ -111,7 +130,10 @@ export default {
     border-bottom: 1px solid #ddd;
 }
 .filter-header{
+    position: relative;
     width: 100%;
+    z-index: 10;
+    background-color: #fff;
 }
 .filter-header ul{
     width: 100%;
@@ -148,9 +170,12 @@ export default {
 .filter-sort{
     position: absolute;
     width: 100%;
+    top: 80px;
+    left: 0;
     padding: 16px 0  24px 0;
     border-top: 1px solid #ddd;
     background-color: #fff;
+    z-index: 5;
 }
 .filter-sort ul li{
     width: 100%;
@@ -163,10 +188,13 @@ export default {
 }
 .filter-open{
     position: absolute;
+    top: 80px;
+    left: 0;
     width: 100%;
     border-top: 1px solid #ddd;
-    padding: 20px 0;
+    padding: 20px 0 0 0;
     background-color: #fff;
+    z-index: 5;
 }
 
 .list-box div{
@@ -190,7 +218,7 @@ export default {
     flex-wrap: wrap;
 }
 .list-box ul li{
-    width: 30%;
+    width: 33%;
     text-align: center;
     padding: 10px;
     box-sizing: border-box;
@@ -218,4 +246,42 @@ export default {
 .slide-leave-active{
     animation: slideOutUp 300ms;
 }
+
+
+/* 按钮设置 */
+.btn-box{
+    height: 88px;
+    width: 100%;
+    background-color:#fafafa;
+    display: flex;
+    box-shadow: 0 -0.266667vw 0.533333vw 0 #ededed;
+}
+.btn{
+  flex: 1;
+  border: none;
+  outline: none;
+  text-align: center;
+  line-height: 86px;
+  color: #fff;
+  font-size: 32px;
+  padding: 0;
+
+}
+.clear{
+    background-color: #fff;    
+    color: #ddd;
+}
+.clear-active{
+    color: #333;
+}
+.makeSure{
+    background: #00d762;
+}
+/*选中的效果*/ 
+.list-box ul li span.picked{
+    font-weight: 700;
+    color: #3190e8;
+    background-color: #edf5ff;
+}
+
 </style>
