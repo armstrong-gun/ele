@@ -1,5 +1,7 @@
 <template>
-    <h1>发现</h1>
+<page class="page">
+        <h1>发现</h1>
+</page>
 </template>
 
 <script>

@@ -7,7 +7,7 @@ import Home from '@/pages/home'
 import Discover from '@/pages/discover'
 import Order from '@/pages/order'
 import Mine from '@/pages/mine'
-
+import Login from '@/pages/login'
 
 export default new Router({
   routes: [
@@ -31,6 +31,11 @@ export default new Router({
       path:'/mine',
       name:'mine',
       component:Mine
+    },
+    {
+      path:'/login',
+      name:'login',
+      component:Login
     }
   ]
 })

@@ -1,13 +1,22 @@
 <template>
-    <h1>我的</h1>
+<page class="page">
+    <login-header/>
+    <content />
+</page>
 </template>
 
 <script>
+import loginHeader from '../../components/mine/loginHeader'
+import content from '../../components/mine/content'
 export default {
-
+   components:{
+        loginHeader,
+        content
+   }
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>
+
