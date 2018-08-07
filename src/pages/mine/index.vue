@@ -1,21 +1,22 @@
 <template>
 <page class="page">
-        <h1>我的</h1>
-        <button @click="tologin()">LOGIN</button>
+    <login-header/>
+    <content />
 </page>
 </template>
 
 <script>
+import loginHeader from '../../components/mine/loginHeader'
+import content from '../../components/mine/content'
 export default {
-        methods:{
-                tologin(){
-                        this.$router.push('/login')
-                }
-        }
+   components:{
+        loginHeader,
+        content
+   }
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>
 
