@@ -10,7 +10,7 @@
          rank_id：
          terminal
 */
-const RESTAURANT = '/restapi/shopping/v3/restaurants?latitude=22.569071&longitude=114.253228&offset=0&limit=8&extras[]=activities&extras[]=tags&extra_filters=home&rank_id=&terminal=h5'
+const RESTAURANT = '/restapi/shopping/v3/restaurants?latitude=22.569071&longitude=114.253228&limit=8&extras[]=activities&extras[]=tags&extra_filters=home&rank_id=&terminal=h5'
 
 
 

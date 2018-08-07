@@ -9,7 +9,7 @@ export default {
         // getEntries_BannerData().then(response=>{
         //     console.log(response);
         // });
-        getRestaurantData().then(response=>{
+        getRestaurantData(0).then(response=>{
             console.log(response);
             
         })

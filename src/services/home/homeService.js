@@ -191,9 +191,12 @@ export function getAverage_CostsData() {
 }
 
 //请求商家列表数据
-export function getRestaurantData() {
+//getoffset请求的页数
+export function getRestaurantData(getoffset = 0) {
+    getoffset *= 8
+    let offset = '&offset=' + getoffset
     return new Promise((resolve, reject) => {
-        axios.get(API.RESTAURANT)
+        axios.get(API.RESTAURANT + offset)
             .then(response => {
                 // console.log('请求成功');
                 // console.log(response.data[0]);
