@@ -3,23 +3,23 @@ import API from '../../api'
 import Img from '../../filtersImg/homeImg'
 
 //请求定位数据
-export function getLocationData() {
-    return new Promise((resolve, reject) => {
-        axios.get(API.LOCATION)
-            .then(response => {
-                // console.log('请求成功');
-                // console.log(response);
+// export function getLocationData() {
+//     return new Promise((resolve, reject) => {
+//         axios.get(API.LOCATION)
+//             .then(response => {
+//                 // console.log('请求成功');
+//                 // console.log(response);
 
-                resolve(response)
-            })
-            .catch(error => {
-                console.log(error);
+//                 resolve(response)
+//             })
+//             .catch(error => {
+//                 console.log(error);
 
-                console.log('请求失败');
+//                 console.log('请求失败');
 
-            })
-    })
-}
+//             })
+//     })
+// }
 
 //请求轮播图数据
 export function getEntries_BannerData() {
@@ -184,6 +184,46 @@ export function getAverage_CostsData() {
             })
             .catch(error => {
                 console.log(error);
+                console.log('请求失败');
+
+            })
+    })
+}
+
+//请求商家列表数据
+export function getRestaurantData() {
+    return new Promise((resolve, reject) => {
+        axios.get(API.RESTAURANT)
+            .then(response => {
+                // console.log('请求成功');
+                // console.log(response.data[0]);
+                let data = response.data.items.map(item => {
+                    let Item = item.restaurant
+                    return {
+                        name: Item.name,
+                        id: Item.id,
+                        order_lead_time: Item.order_lead_time,
+                        distance: Item.name,
+                        flavors: Item.flavors,
+                        rating: Item.rating,
+                        recent_order_num: Item.recent_order_num,
+                        float_delivery_fee: Item.float_delivery_fee,
+                        float_minimum_order_amount: Item.float_minimum_order_amount,
+                        activities: Item.activities.map(item => {
+                            return {
+                                description: item.description,
+                                id: item.id
+                            }
+                        }),
+                        recommend: [Item.recommend.reason, Img(20, 20, Item.recommend.image_hash)],
+                        image_path: Img(130, 130, Item.image_path)
+                    }
+                })
+                resolve(data)
+            })
+            .catch(error => {
+                console.log(error);
+
                 console.log('请求失败');
 
             })
