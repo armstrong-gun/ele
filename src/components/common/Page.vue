@@ -61,7 +61,7 @@ export default {
   position: absolute;
   top: 88px;
   left: 0;
-  bottom: 0;
+  bottom: 100px;
   background: #ebebeb;
   overflow: hidden;
 }

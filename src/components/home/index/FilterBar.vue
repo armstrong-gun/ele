@@ -46,7 +46,9 @@
                         <h4>人均消费</h4>
                         <ul>
                             <li v-for="costItem in openListData.average_costs" :key="costItem.id">
-                                <span @click="changePickedStyle(costItem.id)" :class="{picked:addPickedBool[costItem.id]}">{{costItem.description}}</span>
+                                <span :class="{picked:addPicked==costItem.id}"  @click="changePickedStyle(costItem.id)">
+                                    {{costItem.description}}
+                                </span>
                             </li>
                             <!-- 一加class就都加上了，有待解决 -->
                         </ul>
@@ -95,7 +97,7 @@ export default {
                     {name:"开发票"}
                 ]
             },
-            addPickedBool:{}
+            addPicked:-1
             
         }
     },
@@ -113,7 +115,8 @@ export default {
             this.showOpen = false;
         },
         changePickedStyle(id){
-            this.addPickedBool[id] = !this.addPickedBool[id];
+            console.log(id);
+            this.addPickedBool = id;
         }
     }
 }
@@ -232,6 +235,12 @@ export default {
     width: 100%;
     color: #333;
 }
+/*选中的效果*/ 
+.list-box ul li span.picked{
+    font-weight: 700;
+    color: #3190e8;
+    background-color: #edf5ff;
+}
 @keyframes slideInDown {
     0%{transform: translateY(-100%)}
     100%{transform: translateY(0%)}
@@ -246,8 +255,6 @@ export default {
 .slide-leave-active{
     animation: slideOutUp 300ms;
 }
-
-
 /* 按钮设置 */
 .btn-box{
     height: 88px;
@@ -277,11 +284,6 @@ export default {
 .makeSure{
     background: #00d762;
 }
-/*选中的效果*/ 
-.list-box ul li span.picked{
-    font-weight: 700;
-    color: #3190e8;
-    background-color: #edf5ff;
-}
+
 
 </style>
