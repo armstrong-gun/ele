@@ -1,14 +1,4 @@
 <template>
-<<<<<<< HEAD
-<tabs></tabs>
-</template>
-
-<script>
-import Tabs from './components/common/Tabs'
-export default {
-  components:{
-    Tabs,
-=======
   <div id="app">
     <!-- 首页的header和其他页面的不一洋 -->
     <app-header/>
@@ -28,14 +18,9 @@ export default {
   components:{
     AppTabs,
     AppHeader
->>>>>>> master
   }
 }
 </script>
 
 <style>
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 </style>

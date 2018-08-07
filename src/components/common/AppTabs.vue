@@ -1,7 +1,7 @@
 <template>
 <div id="apptabs">
     <ul class="tabs">
-        <li class="tab" v-for="(value,key) in navList" :key="key" @click="changePage(value.path)" >
+        <li class="tab" v-for="(value,key) in navList" :key="key" @click="changePage(value)" >
             <i :class="value.class"></i>
            <div> 
                {{value.title}}
@@ -15,6 +15,7 @@
 export default {
     data(){
         return{
+            chooseItem:{},
             navList:[
                 {title:'首页',class:'icon-elmyhq iconfont',path:'/home'},
                 {title:'发现',class:'icon-icon-test iconfont',path:'/discover'},
@@ -24,8 +25,9 @@ export default {
         }
     },
     methods:{
-        changePage(path){
-            this.$router.push(path);
+        changePage(value){
+            this.$center.$emit('changeHeader',value)
+            this.$router.push(value.path);
         }
     }
 }
@@ -45,8 +47,9 @@ export default {
 .tab{
     flex:25%;
     color:#8e8e93;
-    font-size: 24px;
+    font-size: 22px;
     text-align: center;
+    padding-top:5px;
 }
 .active{
     color:#0089dc;

@@ -2,8 +2,8 @@
 <div id="appheader">
     <div class="head">
         <i class="iconfont icon-arrow_lift"></i>
-        <div class="title">
-            发现
+        <div class="title" v-for="item in headerData" :key="item">
+            {{item}}
         </div>
     </div>
 </div>
@@ -11,7 +11,21 @@
 
 <script>
 export default {
-
+    data(){
+        return{
+            headerData:{}
+        }
+    },
+    methods:{
+      getInfo(){
+        this.$center.$on('changeHeader',(value)=>{
+            this.headerData = value ;
+        })
+      }  
+    },
+    mounted(){
+        this.getInfo();
+    }
 }
 </script>
 

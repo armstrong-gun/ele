@@ -1,9 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-<<<<<<< HEAD
-import Home from '@/pages/home/Index.vue'
-=======
->>>>>>> master
 Vue.use(Router)
 
 //引入pages里面的组件
@@ -11,16 +7,11 @@ import Home from '@/pages/home'
 import Discover from '@/pages/discover'
 import Order from '@/pages/order'
 import Mine from '@/pages/mine'
-
+import Login from '@/pages/login'
 
 export default new Router({
   routes: [
     {
-<<<<<<< HEAD
-      path: '/home',
-      name: 'home',
-      component: Home
-=======
       path:'/home',
       alias:'/',
       name:'home',
@@ -40,7 +31,11 @@ export default new Router({
       path:'/mine',
       name:'mine',
       component:Mine
->>>>>>> master
+    },
+    {
+      path:'/login',
+      name:'login',
+      component:Login
     }
   ]
 })
