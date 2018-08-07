@@ -10,7 +10,15 @@ import filters from './filters'
 Vue.use(filters)
 //引入全局组件
 import Page from './components/common/Page'
-Vue.component('page',Page)
+//引入商家卡片组件
+import RestauranCard from './components/common/RestaurantCard.vue'
+Vue.components(
+  {
+    'page':Page,
+    'RCard':RestauranCard
+  }
+)
+
 //为了非父子组件传值
 Vue.prototype.$center = center
 

@@ -13,6 +13,8 @@
 //引入公共组件
 import AppTabs from '@/components/common/AppTabs.vue'
 import AppHeader from '@/components/common/AppHeader.vue'
+
+
 export default {
   name: 'App',
   components:{

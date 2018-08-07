@@ -5,6 +5,7 @@
         <activity-logo></activity-logo>
         <div class="shoplist-title">推荐商家</div>
         <filter-bar></filter-bar>
+        <r-card v-for=""></r-card>
     </page>
 </template>
 
@@ -15,8 +16,9 @@ import {getEntries_BannerData} from '@/services/home/homeService.js'
 import Banner from '@/components/home/index/Banner.vue'
 //引入活动logo组件
 import ActivityLogo from '@/components/home/index/ActivityLogo.vue'
-//引入筛选栏
+//引入筛选栏组件
 import FilterBar from '@/components/home/index/FilterBar.vue'
+
 export default {
     data(){
         return{
@@ -31,7 +33,6 @@ export default {
     mounted(){
         //请求轮播图图片数据
         getEntries_BannerData().then(result=>{
-            // console.log(result);
             let newArr = [[]];
             let num = 0;
             for (let i = 1; i <= result.length; i++) {
@@ -43,7 +44,10 @@ export default {
             }
             console.log(newArr);
             this.bannerData = newArr;
-        })
+        });
+        //请求餐厅卡片数据
+        
+
     }
     
 }    
