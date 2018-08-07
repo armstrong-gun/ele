@@ -10,7 +10,7 @@
          rank_id：
          terminal
 */
-const RESTAURANT = '/restapi/shopping/v3/restaurants'
+const RESTAURANT = '/restapi/shopping/v3/restaurants?latitude=22.569071&longitude=114.253228&offset=0&limit=8&extras[]=activities&extras[]=tags&extra_filters=home&rank_id=&terminal=h5'
 
 
 
@@ -20,7 +20,7 @@ const RESTAURANT = '/restapi/shopping/v3/restaurants'
     接口参数：latitude：纬度
              longitude：经度
 */
-const LOCATION = '/member/v2/users/784884818/location'
+// const LOCATION = '/restapi/bgs/poi/reverse_geo_coding?latitude=22.626024&longitude=113.837884'
 
 
 
@@ -44,9 +44,17 @@ const ENTRIES_BANNER = '/restapi/shopping/openapi/entries?latitude=22.569071&lon
 */
 const SORTFILTER = '/restapi/shopping/v1/restaurants/outside_filter/attributes?latitude=22.569071&longitude=114.253228&terminal=h5'
 
+/*
+接口功能：筛选
+接口参数：?latitude=22.569071
+         &longitude=114.253228
+         &terminal=h5
+*/
+const FILTRATE = '/restapi/shopping/v1/restaurants/filter-bar/attributes?latitude=22.569071&longitude=114.253228&terminal=h5'
+
 export default {
-    LOCATION,
     SORTFILTER,
     ENTRIES_BANNER,
-
+    FILTRATE,
+    RESTAURANT
 }
