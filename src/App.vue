@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <!-- 首页的header和其他页面的不一洋 -->
+    <!-- 首页的header和其他页面的不一样 -->
     <app-header/>
     <keep-alive>
       <router-view></router-view>

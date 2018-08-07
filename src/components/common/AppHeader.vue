@@ -1,9 +1,16 @@
 <template>
 <div id="appheader">
-    <div class="head">
+    <!-- 当为首页时header为定位 -->
+    <div class="gps" v-if="header == '首页'">
+        <i class="iconfont icon-location"></i>
+        <!-- 选择地点 -->
+        <div class="location">location</div>
+    </div>
+    <!-- 其他时间为标题 -->
+    <div class="head" v-else>
         <i class="iconfont icon-arrow_lift"></i>
-        <div class="title" v-for="item in headerData" :key="item">
-            {{item}}
+        <div class="title">
+            {{header}}
         </div>
     </div>
 </div>
@@ -13,15 +20,16 @@
 export default {
     data(){
         return{
-            headerData:{}
+            header:'首页',
         }
     },
     methods:{
-      getInfo(){
-        this.$center.$on('changeHeader',(value)=>{
-            this.headerData = value ;
-        })
-      }  
+        //获取跳转页面资料修改标题,暂时只有tabs的，之后存在小分页再进行修改
+        getInfo(){
+            this.$center.$on('changeHeader',(value)=>{
+                this.header = value.title ;
+            })
+        }  
     },
     mounted(){
         this.getInfo();
@@ -30,7 +38,7 @@ export default {
 </script>
 
 <style scoped>
-.head{
+.head, .gps{
     height:88px;
     background-image: linear-gradient(90deg,#0af,#0085ff);
     position: absolute;
@@ -38,13 +46,13 @@ export default {
     left:0;
     width:100%;
 }
-.icon-arrow_lift , .title{
+.iconfont , .title, .location{
     color:#fff;
     height:88px;
     line-height:88px;
     font-size: 36px;
 }
-.icon-arrow_lift{
+.iconfont{
     position: absolute;
     left:0;
     top:0;
@@ -56,5 +64,11 @@ export default {
 }
 .title{
     text-align: center;
+}
+.location{
+    position: absolute;
+    left:80px;
+    top:0;
+
 }
 </style>
