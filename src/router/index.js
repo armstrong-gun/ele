@@ -1,5 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+<<<<<<< HEAD
+=======
+import Home from '@/pages/home/Index.vue'
+>>>>>>> origin/zyx
 Vue.use(Router)
 
 //引入pages里面的组件
@@ -12,6 +16,7 @@ import Mine from '@/pages/mine'
 export default new Router({
   routes: [
     {
+<<<<<<< HEAD
       path:'/home',
       alias:'/',
       name:'home',
@@ -31,6 +36,11 @@ export default new Router({
       path:'/mine',
       name:'mine',
       component:Mine
+=======
+      path: '/home',
+      name: 'home',
+      component: Home
+>>>>>>> origin/zyx
     }
   ]
 })

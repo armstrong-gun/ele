@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div id="app">
     <!-- 首页的header和其他页面的不一洋 -->
     <router-view></router-view>
@@ -15,10 +16,23 @@ export default {
   components:{
     AppTabs,
     AppHeader
+=======
+<tabs></tabs>
+</template>
+
+<script>
+import Tabs from './components/common/Tabs'
+export default {
+  components:{
+    Tabs,
+>>>>>>> origin/zyx
   }
 }
 </script>
 
 <style>
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/zyx
 </style>
